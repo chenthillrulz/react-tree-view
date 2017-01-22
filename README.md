@@ -28,7 +28,6 @@ const data = {
         },
         {
             name: 'Important',
-            loading: true,
             children: []
         }
       ]
