@@ -7,7 +7,7 @@ class TreeContainer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {selectedNodeId: -1};
+        this.state = {selectedNodeId: undefined};
     }
 
     onSelectionChanged (node) {
@@ -30,7 +30,7 @@ class TreeContainer extends React.Component {
         let data = this.props.data;
         //console.log("rendering tree container");
 
-        // Support Multiple Root Nodes. Its not formally a tree, but its a use-case.
+        // Allows array and single field data
         if(!Array.isArray(data)){ data = [data]; }
         this.nodeCounter = 1;
 
