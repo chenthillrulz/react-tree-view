@@ -17,7 +17,6 @@ export default {
         },
         {
             name: 'Important',
-            loading: true,
             children: []
         },
         {
