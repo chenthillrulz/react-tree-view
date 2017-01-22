@@ -59,6 +59,9 @@ Tree data that is used to render the tree view.
 #### highlightSelected
 HighLights the selected node. Note, at the moment it renders the whole tree again. This is to unselect the previously selected node in the tree. Probably there could be better ways to render just the two nodes (needs more research).
 
+#### expandIcon/collapseIcon
+Allows to change the bootstrap based glyphicon
+
 ### Data Attributes
 
 ```javascript
