@@ -1,12 +1,12 @@
 'use strict';
 
 import React from 'react';
+var classNames = require('classnames');
 
 class TreeNode extends React.Component {
     constructor(props){
         super(props);
 
-        let node = this.props.node;
         this.state = {expanded: this.props.node.expanded};
     }
 
@@ -49,11 +49,20 @@ class TreeNode extends React.Component {
         var node = this.props.node;
         console.log ("Rendering TreeNode");
 
+        var nodeType = classNames({
+            'parent-node': this.props.node.children && this.props.node.children.length != 0,
+            'leaf-node': !this.props.node.children || this.props.node.children.length == 0,
+        });
+
+        console.log(nodeType);
+
         return  (
-            <li onClick={this.toggleExpanded.bind(this, node.id)}>
-                <label>{this.props.node.name}</label>
-                {this.renderChildren()}
-            </li>
+            <div className={nodeType}>
+                <li onClick={this.toggleExpanded.bind(this, node.id)}>
+                    <label>{this.props.node.name}</label>
+                    {this.renderChildren()}
+                </li>
+            </div>
 
         );
     }

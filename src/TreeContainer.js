@@ -41,7 +41,7 @@ class TreeContainer extends React.Component {
 
         return(
             <div className="treeview">
-                <ul className="base">
+                <ul>
                     {data.map((node, index) =>
                         <TreeNode node={node}
                              Key={node.id}
