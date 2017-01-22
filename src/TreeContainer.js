@@ -46,9 +46,6 @@ class TreeContainer extends React.Component {
                             key={node.id}
                             onSelectionChangedCallBack={this.onSelectionChanged.bind(this)}
                             selectedNodeId={this.state.selectedNodeId}
-                            highlightSelected=""
-                            visible={true}
-                            level = {1}
                             options={this.props}
                         />
                     )}

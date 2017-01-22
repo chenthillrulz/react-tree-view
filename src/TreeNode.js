@@ -37,10 +37,8 @@ class TreeNode extends React.Component {
                             onSelectionChangedCallBack={this.props.onSelectionChangedCallBack}
                             selectedNodeId={this.props.selectedNodeId}
                             key={child.id}
-                            level={this.props.level + 1}
                             node={child}
                             options={this.props.options}
-                            visible={this.state.expanded && this.props.visible}
                         />
                     )}
                 </ul>
