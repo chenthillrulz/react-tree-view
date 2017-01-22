@@ -84,5 +84,6 @@ Allows to change the bootstrap based glyphicon
 #### expanded
 Denotes if the parent node should appear expanded in case it has children.
 
-
+### Courtersy
+This code has taken the inspiration from many packages from react-awesome-components..
 
