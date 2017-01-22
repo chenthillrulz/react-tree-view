@@ -69,13 +69,13 @@ HighLights the selected node. Note, at the moment it renders the whole tree agai
     expanded: '[optional] boolean'
  }
  ```
- ### id
+### id
  The optional id parameter. If not provided the ids would be generated based on node count.
  
- ### name
+### name
  The name of the tree node.
  
- ### children
+### children
  child nodes
  
 ### expanded
