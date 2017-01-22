@@ -13,10 +13,11 @@ class TreeNode extends React.Component {
     toggleExpanded (id, event) {
         this.setState({ expanded: !this.state.expanded });
         event.stopPropagation();
+        this.props.onSelectionChangedCallBack (this.props.node);
     }
 
     toggleSelected (id, event) {
-        this.props.onSelectionChanged (id);
+
         event.stopPropagation();
     }
 
@@ -27,12 +28,14 @@ class TreeNode extends React.Component {
         if (visible) {
             let children = this.props.node.children;
             if (!Array.isArray(children)) { children = children ? [children] : []; }
-            console.log ("rendering children");
+            //console.log ("rendering children");
 
             return(
                 <ul>
                     {children.map((child, index) =>
                         <TreeNode
+                            onSelectionChangedCallBack={this.props.onSelectionChangedCallBack}
+                            selectedNodeId={this.props.selectedNodeId}
                             key={child.id}
                             level={this.props.level + 1}
                             node={child}
@@ -48,7 +51,7 @@ class TreeNode extends React.Component {
     render(){
         var node = this.props.node;
         var options = this.props.options;
-        console.log ("Rendering TreeNode");
+        //console.log ("Rendering TreeNode");
 
         // Maybe use it for syling later
         var nodeType = classNames({
@@ -64,13 +67,17 @@ class TreeNode extends React.Component {
 
         var expandCollapseIcon = <span className={expandCollapseIcon} />;
 
-        console.log(nodeType);
+        //console.log(nodeType);
+        var nodeClassNames = classNames({
+            "node-label": true,
+            "selected": this.props.selectedNodeId == node.id
+        });
 
         return  (
             <div className={nodeType}>
                 <li onClick={this.toggleExpanded.bind(this, node.id)}>
                     {expandCollapseIcon}
-                    <label className="node-label selected">{this.props.node.name}</label>
+                    <label className={nodeClassNames}>{this.props.node.name}</label>
                     {this.renderChildren()}
                 </li>
             </div>

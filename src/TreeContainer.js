@@ -10,43 +10,43 @@ class TreeContainer extends React.Component {
         this.state = {selectedNodeId: -1};
     }
 
-    onSelectionChanged (nodeId) {
-        this.setState({selectedNodeId: nodeId});
-    }
-
-    isSelected (nodeId) {
-        if (this.state.selectedNodeId == nodeId) {return true;}
-        else {return false;}
+    onSelectionChanged (node) {
+        //console.log("TreeContainer selected node id - " + node.id);
+        this.setState({selectedNodeId: node.id});
     }
 
     setNodeIds (node) {
-        if (!node.children) return;
-        console.log(this.counter);
+        node.id = node.id || this.nodeCounter;
+        this.nodeCounter += 1;
 
-        node.children.foreach ((child, index) => {
-            this.props.counter += 1;
-            child.id = child.id || this.counter;
+        if (!node.children || node.children.length == 0) return;
+
+        node.children.forEach ((child, index) => {
             this.setNodeIds(child);
         });
     }
 
     render () {
         let data = this.props.data;
-        console.log("rendering tree container");
+        //console.log("rendering tree container");
 
         // Support Multiple Root Nodes. Its not formally a tree, but its a use-case.
         if(!Array.isArray(data)){ data = [data]; }
-        this.counter = 0;
-        this.setNodeIds(data);
+        this.nodeCounter = 1;
+
+        //FIXME is it an efficient way to handling setting ids or should we use something like
+        // this.props.hasInitializedIds?
+        data.forEach((node) => this.setNodeIds(node));
 
         return(
             <div className="treeview">
                 <ul>
                     {data.map((node, index) =>
                         <TreeNode node={node}
-                             Key={node.id}
-                            onSelectionChanged={this.onSelectionChanged}
-                            isSelected={this.isSelected(node.id)}
+                            key={node.id}
+                            onSelectionChangedCallBack={this.onSelectionChanged.bind(this)}
+                            selectedNodeId={this.state.selectedNodeId}
+                            highlightSelected=""
                             visible={true}
                             level = {1}
                             options={this.props}
@@ -62,7 +62,6 @@ TreeContainer.defaultProps = {
     expandIcon: 'glyphicon glyphicon-plus',
     collapseIcon: 'glyphicon glyphicon-minus',
     emptyIcon: 'glyphicon',
-    nodeIcon: 'glyphicon glyphicon-stop',
 };
 
 TreeContainer.propTypes = {
@@ -74,7 +73,6 @@ TreeContainer.propTypes = {
     expandIcon: React.PropTypes.string,
     collapseIcon: React.PropTypes.string,
     emptyIcon: React.PropTypes.string,
-    nodeIcon: React.PropTypes.string,
 }
 
 export default TreeContainer;
