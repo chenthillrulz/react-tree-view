@@ -5,3 +5,7 @@
 .treeview .node-label {
     margin-left: 4px;
 }
+
+.treeview .selected {
+    color: bisque;
+}

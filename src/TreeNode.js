@@ -50,6 +50,7 @@ class TreeNode extends React.Component {
         var options = this.props.options;
         console.log ("Rendering TreeNode");
 
+        // Maybe use it for syling later
         var nodeType = classNames({
             'parent-node': this.props.node.children && this.props.node.children.length != 0,
             'leaf-node': !this.props.node.children || this.props.node.children.length == 0,
@@ -69,7 +70,7 @@ class TreeNode extends React.Component {
             <div className={nodeType}>
                 <li onClick={this.toggleExpanded.bind(this, node.id)}>
                     {expandCollapseIcon}
-                    <label className="node-label">{this.props.node.name}</label>
+                    <label className="node-label selected">{this.props.node.name}</label>
                     {this.renderChildren()}
                 </li>
             </div>
@@ -80,7 +81,7 @@ class TreeNode extends React.Component {
 
 TreeNode.propTypes = {
     node: React.PropTypes.object,
-    onToggle: React.PropTypes.func
+    onSelectionChanged: React.PropTypes.func
 };
 
 export default TreeNode;
