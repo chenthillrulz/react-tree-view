@@ -13,6 +13,7 @@ class DemoTree extends React.Component {
        render(){
            return  (<TreeContainer
                     data={data}
+                    highlightSelected={true}
            />);
 
     }

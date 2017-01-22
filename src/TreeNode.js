@@ -13,7 +13,9 @@ class TreeNode extends React.Component {
     toggleExpanded (id, event) {
         this.setState({ expanded: !this.state.expanded });
         event.stopPropagation();
-        this.props.onSelectionChangedCallBack (this.props.node);
+
+        if (this.props.options.highlightSelected)
+            this.props.onSelectionChangedCallBack (this.props.node);
     }
 
     toggleSelected (id, event) {

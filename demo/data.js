@@ -1,47 +1,45 @@
 'use strict';
 
 export default {
-    name: 'react-treebeard',
+    name: 'Inbox',
     expanded: true,
     children: [
         {
-            name: 'example',
+            name: 'Circles',
             expanded: true,
             children: [
-                { name: 'app.js' },
-                { name: 'data.js' },
-                { name: 'index.html' },
-                { name: 'styles.js' },
-                { name: 'webpack.config.js' }
+                { name: 'Friends' },
+                { name: 'Family' },
+                { name: 'Acquantances' },
+                { name: 'Following' },
+                { name: 'spiritual' }
             ]
         },
         {
-            name: 'node_modules',
+            name: 'Important',
             loading: true,
             children: []
         },
         {
-            name: 'src',
+            name: 'Suse',
             children: [
                 {
-                    name: 'components',
+                    name: 'Research',
                     children: [
-                        { name: 'decorators.js' },
-                        { name: 'treebeard.js' }
+                        { name: 'devel' },
+                        { name: 'fun' }
                     ]
                 },
-                { name: 'index.js' }
+                { name: 'build-service' }
             ]
         },
         {
             name: 'themes',
             children: [
-                { name: 'animations.js' },
-                { name: 'default.js' }
+                { name: 'animations' },
+                { name: 'default' }
             ]
         },
-        { name: 'Gulpfile.js' },
-        { name: 'index.js' },
-        { name: 'package.json' }
+        { name: 'Chats' }
     ]
 };
