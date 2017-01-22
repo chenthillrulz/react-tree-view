@@ -107,6 +107,6 @@ Extensively uses the ES6 syntax.
 ```
 As the time which took to develop exceeded than anticipated, have not covered the testing part at the moment.
 
-### Courtersy
+### Courtesy
 This has taken the inspiration from many packages from react-awesome-components.
 
