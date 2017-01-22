@@ -1,3 +1,7 @@
 .treeview ul {
     list-style: none;
 }
+
+.treeview .node-label {
+    margin-left: 4px;
+}

@@ -47,6 +47,7 @@ class TreeNode extends React.Component {
 
     render(){
         var node = this.props.node;
+        var options = this.props.options;
         console.log ("Rendering TreeNode");
 
         var nodeType = classNames({
@@ -54,12 +55,21 @@ class TreeNode extends React.Component {
             'leaf-node': !this.props.node.children || this.props.node.children.length == 0,
         });
 
+        var expandCollapseIcon = options.emptyIcon;
+        if (node.children && node.children.length != 0) {
+            if (!this.state.expanded) {expandCollapseIcon = options.expandIcon;}
+            else {expandCollapseIcon = options.collapseIcon; }
+        }
+
+        var expandCollapseIcon = <span className={expandCollapseIcon} />;
+
         console.log(nodeType);
 
         return  (
             <div className={nodeType}>
                 <li onClick={this.toggleExpanded.bind(this, node.id)}>
-                    <label>{this.props.node.name}</label>
+                    {expandCollapseIcon}
+                    <label className="node-label">{this.props.node.name}</label>
                     {this.renderChildren()}
                 </li>
             </div>
