@@ -2,7 +2,11 @@
 Provides a simple re-usable tree widget
 
 # Example
-
+Run the demo app by
+```
+npm install
+npm run demo
+```
 ### Quick Start
 ```javascript
 'use strict';
@@ -84,6 +88,25 @@ Allows to change the bootstrap based glyphicon
 #### expanded
 Denotes if the parent node should appear expanded in case it has children.
 
+### Dev notes
+The idea was to first start planning on the test framework and then move on with developing the feature. The infrastructure uses webpack for packaging the resources. It enables the hot load plugin. The configurations files are in place and would eventually use the following packaging for testing
+```
+karma - test runner
+mocha - test framework
+istanbul -  test code coverage
+chai - testing assertions
+```
+For development it uses,
+```
+npm - package manager. We could also use yarn eventually as well. Have been reading some good comments 
+such as deterministic algorithm it uses for installing dependencies and the lock.
+
+webpack - for bundling the resources
+
+Extensively uses the ES6 syntax.
+```
+As the time which took to develop exceeded than anticipated, have not covered the testing part at the moment.
+
 ### Courtersy
-This code has taken the inspiration from many packages from react-awesome-components..
+This has taken the inspiration from many packages from react-awesome-components.
 
