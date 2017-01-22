@@ -89,7 +89,7 @@ Allows to change the bootstrap based glyphicon
 Denotes if the parent node should appear expanded in case it has children.
 
 ### Dev notes
-The idea was to first start planning on the test framework and then move on with developing the feature. The infrastructure uses webpack for packaging the resources. It enables the hot load plugin. The configurations files are in place and would eventually use the following packaging for testing
+The idea was to first start planning on the test framework and then move on with developing the feature. The infrastructure uses webpack for packaging the resources. It enables the hot load plugin. The configurations files are in place and would eventually use the following packages for testing
 ```
 karma - test runner
 mocha - test framework
