@@ -60,10 +60,6 @@
   },
   "dependencies": {
     "babel-runtime": "^5.8.29",
-    "deep-equal": "^1.0.1",
-    "radium": "^0.18.0",
-    "react-bootstrap": "^0.30.7",
-    "shallowequal": "^0.2.2",
-    "velocity-react": "^1.1.2"
+    "react-bootstrap": "^0.30.7"
   }
 }
