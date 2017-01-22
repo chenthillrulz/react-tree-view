@@ -7,7 +7,7 @@ class TreeNode extends React.Component {
         super(props);
 
         let node = this.props.node;
-        this.state = {expanded: true};
+        this.state = {expanded: this.props.node.expanded};
     }
 
     toggleExpanded (id, event) {
@@ -22,7 +22,7 @@ class TreeNode extends React.Component {
 
     renderChildren () {
         var node = this.props.node;
-        const visible = this.props.visible;
+        const visible = this.state.expanded;
 
         if (visible) {
             let children = this.props.node.children;
@@ -48,41 +48,6 @@ class TreeNode extends React.Component {
     render(){
         var node = this.props.node;
         console.log ("Rendering TreeNode");
-        var options = this.props.options;
-
-        var style;
-        if (!this.props.visible) {
-
-            style = {
-                display: 'none'
-            };
-        }
-        else {
-
-            if (options.highlightSelected && this.state.selected) {
-                style = {
-                    color: options.selectedColor,
-                    backgroundColor: options.selectedBackColor
-                };
-            }
-            else {
-                style = {
-                    color: node.color || options.color,
-                    backgroundColor: node.backColor || options.backColor
-                };
-            }
-
-            if (!options.showBorder) {
-                style.border = 'none';
-            }
-            else if (options.borderColor) {
-                style.border = '1px solid ' + options.borderColor;
-            }
-        }
-
-
-
-
 
         return  (
             <li onClick={this.toggleExpanded.bind(this, node.id)}>
