@@ -42,6 +42,10 @@ class TreeContainer extends React.Component {
             this.hasInitializedIds = true;
         }
 
+        // Only share the tree properties needed after stripping unwanted ones
+        var options = Object.assign({}, this.props);
+        delete options['data'];
+
         return(
             <div className="treeview">
                 <ul>
@@ -50,7 +54,7 @@ class TreeContainer extends React.Component {
                             key={node.id}
                             onSelectionChangedCallBack={this.onSelectionChanged.bind(this)}
                             selectedNodeId={this.state.selectedNodeId}
-                            options={this.props}
+                            options={options}
                         />
                     )}
                 </ul>
