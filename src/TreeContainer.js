@@ -8,6 +8,7 @@ class TreeContainer extends React.Component {
         super(props);
 
         this.state = {selectedNodeId: undefined};
+        this.hasInitializedIds = false;
     }
 
     onSelectionChanged (node) {
@@ -32,11 +33,14 @@ class TreeContainer extends React.Component {
 
         // Allows array and single field data
         if(!Array.isArray(data)){ data = [data]; }
-        this.nodeCounter = 1;
 
-        //FIXME is it an efficient way to handling setting ids or should we use something like
-        // this.props.hasInitializedIds?
-        data.forEach((node) => this.setNodeIds(node));
+
+        if (!this.hasInitializedIds) {
+            //console.log ("intializing ids");
+            this.nodeCounter = 1;
+            data.forEach((node) => this.setNodeIds(node));
+            this.hasInitializedIds = true;
+        }
 
         return(
             <div className="treeview">
