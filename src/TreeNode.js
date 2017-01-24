@@ -6,28 +6,18 @@ var classNames = require('classnames');
 class TreeNode extends React.Component {
     constructor(props){
         super(props);
-
-        this.state = {expanded: this.props.node.expanded};
     }
 
-    toggleExpanded (id, event) {
-        this.setState({ expanded: !this.state.expanded });
+    onClick (id, event) {
         event.stopPropagation();
-
-        if (this.props.options.highlightSelected)
-            this.props.onSelectionChangedCallBack (this.props.node);
-    }
-
-    toggleSelected (id, event) {
-
-        event.stopPropagation();
+        this.props.onSelectionChangedCallBack (this.props.node);
     }
 
     renderChildren () {
         var node = this.props.node;
-        const visible = this.state.expanded;
+        const expand = node.expanded;
 
-        if (visible) {
+        if (expand) {
             let children = this.props.node.children;
             if (!Array.isArray(children)) { children = children ? [children] : []; }
             //console.log ("rendering children");
@@ -61,7 +51,7 @@ class TreeNode extends React.Component {
 
         var expandCollapseIcon = options.emptyIcon;
         if (node.children && node.children.length != 0) {
-            if (!this.state.expanded) {expandCollapseIcon = options.expandIcon;}
+            if (!node.expanded) {expandCollapseIcon = options.expandIcon;}
             else {expandCollapseIcon = options.collapseIcon; }
         }
 
@@ -70,17 +60,19 @@ class TreeNode extends React.Component {
         //console.log(nodeType);
         var nodeClassNames = classNames({
             "node-label": true,
-            "selected": this.props.selectedNodeId == node.id
+            "selected": options.highlightSelected && this.props.selectedNodeId == node.id
         });
 
         return  (
-            <div className={nodeType}>
-                <li onClick={this.toggleExpanded.bind(this, node.id)}>
-                    {expandCollapseIcon}
-                    <label className={nodeClassNames}>{this.props.node.name}</label>
+
+                <li onClick={this.onClick.bind(this, node.id)}>
+                    <div className={nodeType}>
+                        {expandCollapseIcon}
+                        <label className={nodeClassNames}>{this.props.node.name}</label>
+                    </div>
                     {this.renderChildren()}
                 </li>
-            </div>
+
 
         );
     }

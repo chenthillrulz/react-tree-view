@@ -13,6 +13,11 @@ class TreeContainer extends React.Component {
 
     onSelectionChanged (node) {
         //console.log("TreeContainer selected node id - " + node.id);
+
+        // expand/collapse
+        if (node.children)
+            node.expanded = !node.expanded;
+
         this.setState({selectedNodeId: node.id});
     }
 
