@@ -6,6 +6,7 @@ Run the demo app by
 ```
 npm install
 npm run demo
+open the link - http://localhost:8080/webpack-dev-server/ in the web-browser.
 ```
 ### Quick Start
 ```javascript
