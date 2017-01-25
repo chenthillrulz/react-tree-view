@@ -2,10 +2,10 @@
 Provides a simple re-usable tree widget
 
 # Example
-Run the demo app by
+Migrated from npm to yarn. Run the demo app by
 ```
-npm install
-npm run demo
+yarn install
+yarn run demo
 ```
 To view the demo app using the local bundle created under demo folder, click [here](http://htmlpreview.github.io/?https://github.com/chenthillrulz/react-tree-view/blob/master/demo/static-index.html)
 ### Quick Start
