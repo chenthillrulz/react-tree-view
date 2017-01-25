@@ -9,6 +9,7 @@
     "babel": "rimraf lib && babel src/ -d lib/",
     "test": "./node_modules/.bin/karma start karma.conf.js",
     "test-firefox": "./node_modules/karma/bin/karma start --browsers Firefox --single-run",
+    "build": "webpack",
     "demo": "webpack-dev-server --content-base ./demo/ --config ./webpack.config.demo.js"
   },
   "keywords": [
@@ -55,7 +56,7 @@
     "rimraf": "^2.4.4",
     "sinon": "uberVU/Sinon.JS.git",
     "sinon-chai": "^2.8.0",
-    "webpack": "^1.12.2",
+    "webpack": "^1.14.0",
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
