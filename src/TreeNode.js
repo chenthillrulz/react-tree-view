@@ -19,7 +19,7 @@ class TreeNode extends React.Component {
 
         if (expand) {
             let children = this.props.node.children;
-            if (!Array.isArray(children)) { children = children ? [children] : []; }
+            if (!Array.isArray(children) || !children.length) {return;}
             //console.log ("rendering children");
 
             return(
@@ -45,12 +45,12 @@ class TreeNode extends React.Component {
 
         // Maybe use it for syling later
         var nodeType = classNames({
-            'parent-node': this.props.node.children && this.props.node.children.length != 0,
-            'leaf-node': !this.props.node.children || this.props.node.children.length == 0,
+            'parent-node': Array.isArray(node.children) && node.children.length != 0,
+            'leaf-node': !Array.isArray(node.children) || !node.children.length,
         });
 
         var expandCollapseIcon = options.emptyIcon;
-        if (node.children && node.children.length != 0) {
+        if (Array.isArray(node.children) && node.children.length) {
             if (!node.expanded) {expandCollapseIcon = options.expandIcon;}
             else {expandCollapseIcon = options.collapseIcon; }
         }

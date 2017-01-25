@@ -20310,8 +20310,8 @@
 
 	            if (expand) {
 	                var children = this.props.node.children;
-	                if (!Array.isArray(children)) {
-	                    children = children ? [children] : [];
+	                if (!Array.isArray(children) || !children.length) {
+	                    return;
 	                }
 	                //console.log ("rendering children");
 
@@ -20339,12 +20339,12 @@
 
 	            // Maybe use it for syling later
 	            var nodeType = classNames({
-	                'parent-node': this.props.node.children && this.props.node.children.length != 0,
-	                'leaf-node': !this.props.node.children || this.props.node.children.length == 0
+	                'parent-node': Array.isArray(node.children) && node.children.length != 0,
+	                'leaf-node': !Array.isArray(node.children) || !node.children.length
 	            });
 
 	            var expandCollapseIcon = options.emptyIcon;
-	            if (node.children && node.children.length != 0) {
+	            if (Array.isArray(node.children) && node.children.length) {
 	                if (!node.expanded) {
 	                    expandCollapseIcon = options.expandIcon;
 	                } else {
@@ -20495,7 +20495,7 @@
 	            //console.log("TreeContainer selected node id - " + node.id);
 
 	            // expand/collapse
-	            if (node.children) node.expanded = !node.expanded;
+	            if (Array.isArray(node.children) && node.children.length) node.expanded = !node.expanded;
 
 	            this.setState({ selectedNodeId: node.id });
 	        }
@@ -20507,7 +20507,7 @@
 	            node.id = node.id || this.nodeCounter;
 	            this.nodeCounter += 1;
 
-	            if (!node.children || node.children.length == 0) return;
+	            if (!Array.isArray(node.children) || node.children.length == 0) return;
 
 	            node.children.forEach(function (child, index) {
 	                _this.setNodeIds(child);

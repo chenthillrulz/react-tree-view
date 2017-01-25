@@ -15,7 +15,7 @@ class TreeContainer extends React.Component {
         //console.log("TreeContainer selected node id - " + node.id);
 
         // expand/collapse
-        if (node.children)
+        if (Array.isArray(node.children) && node.children.length)
             node.expanded = !node.expanded;
 
         this.setState({selectedNodeId: node.id});
@@ -25,7 +25,7 @@ class TreeContainer extends React.Component {
         node.id = node.id || this.nodeCounter;
         this.nodeCounter += 1;
 
-        if (!node.children || node.children.length == 0) return;
+        if (!Array.isArray(node.children) || node.children.length == 0) return;
 
         node.children.forEach ((child, index) => {
             this.setNodeIds(child);
