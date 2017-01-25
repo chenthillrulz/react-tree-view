@@ -6,8 +6,8 @@ Run the demo app by
 ```
 npm install
 npm run demo
-open the link - http://localhost:8080/webpack-dev-server/ in the web-browser.
 ```
+To view the demo app using the local bundle created under demo folder, click [here](http://htmlpreview.github.io/?https://github.com/chenthillrulz/react-tree-view/blob/master/demo/static-index.html)
 ### Quick Start
 ```javascript
 'use strict';
