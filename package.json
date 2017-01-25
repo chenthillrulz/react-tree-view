@@ -4,9 +4,6 @@
   "description": "React reusable tree widget from chen",
   "main": "index.js",
   "scripts": {
-    "prepublish": "npm run lib",
-    "lib": "npm run babel",
-    "babel": "rimraf lib && babel src/ -d lib/",
     "test": "./node_modules/.bin/karma start karma.conf.js",
     "test-firefox": "./node_modules/karma/bin/karma start --browsers Firefox --single-run",
     "build": "webpack",
